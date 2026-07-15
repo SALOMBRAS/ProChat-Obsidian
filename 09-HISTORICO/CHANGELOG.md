@@ -27,3 +27,8 @@
 - Criação do `AGENTS.md` operacional no projeto principal.
 - Registro das decisões arquiteturais iniciais.
 - Confirmação de que não existe código funcional nesta fase.
+## 2026-07-15 — Fundação inicial do Supabase
+
+- Criado o projeto gratuito `ChatPro` na região `sa-east-1`, com instância `nano`.
+- Adicionados os clientes browser e server do Supabase em `apps/web/src/lib/supabase` e o modelo `apps/web/.env.example`, sem valores reais.
+- Adicionado diagnóstico removível do endpoint de saúde do Supabase; autenticação, tabelas, migrações e demais integrações permanecem fora de escopo.
