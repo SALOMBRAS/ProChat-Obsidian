@@ -46,6 +46,16 @@ O diagnóstico removível `apps/web/src/lib/supabase/connection-test.ts` verific
 
 Com as variáveis do Supabase configuradas em `apps/web/.env.local`, inicie `npm run dev:web` e verifique `/login`, `/cadastro` e `/app`. Uma solicitação anônima para `/app` deve redirecionar para `/login`.
 
+## WAHA local
+
+- O serviço local usa WAHA Core 2026.6.2 na imagem oficial fixada por digest em `docker-compose.yml` na raiz do Main.
+- Copie manualmente `.env.waha.example` para `.env.waha` e preencha `WAHA_API_KEY`, as credenciais do dashboard e as credenciais do Swagger. O arquivo real e `.waha/sessions/` são ignorados pelo Git.
+- O serviço fica limitado a `127.0.0.1:${WAHA_PORT:-3000}`; não há publicação externa. As sessões ficam em `.waha/sessions/`, montado em `/app/.sessions`.
+- Operação: `npm run waha:start`, `npm run waha:stop`, `npm run waha:status` e `npm run waha:logs`.
+- Endpoints operacionais validados: `GET /health`, interface Swagger em `/`, `POST /api/sessions` e `GET /api/{session}/auth/qr`; as chamadas de API usam `X-Api-Key`.
+- O QR Code é temporário e não deve ser registrado. Não escaneie uma conta real sem decisão expressa; WAHA, WhatsApp, Supabase e o frontend continuam sem integração entre si.
+- No futuro, o consumo do WAHA deve ocorrer por adaptador próprio, nunca diretamente pelos componentes da aplicação.
+
 ## Desenvolvimento
 
 Aplicação web:

@@ -36,3 +36,8 @@
 
 - Implementados cadastro, login, logout, callback de confirmação e sessão SSR por cookies, com proteção restrita a `/app`.
 - Mantidos fora de escopo OAuth, perfis, tabelas e qualquer funcionalidade de WhatsApp ou CRM.
+
+# 2026-07-15 — Serviço WAHA local
+
+- Preparado o WAHA Core local em Docker Compose, isolado em loopback, com estado de sessão ignorado pelo Git e sem integração com a aplicação.
+- Documentados os comandos locais, endpoints de operação, persistência, limites e o uso futuro por adaptador próprio.

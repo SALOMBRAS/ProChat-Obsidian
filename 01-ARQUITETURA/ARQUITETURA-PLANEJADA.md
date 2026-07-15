@@ -10,6 +10,11 @@ Este documento separa a fundação já existente das integrações ainda planeja
 - **Conector persistente:** serviço Node.js separado em `services/whatsapp-connector`, ainda sem integração externa.
 - **Pacotes reservados:** `shared`, `database` e `whatsapp-core` contêm somente documentação de responsabilidade futura.
 
+## WAHA local preparado
+
+- WAHA Core 2026.6.2 está preparado somente em Docker Compose pela imagem oficial fixada em digest, isolado em loopback e com sessões persistidas localmente.
+- Não há cliente WAHA, integração com o frontend, Supabase ou WhatsApp nesta fase. O consumo futuro deverá ocorrer por adaptador e contrato próprio `WhatsAppProvider`.
+
 ## Componentes planejados
 
 - **PWA e hospedagem:** evolução futura do frontend; Vercel permanece apenas uma opção futura para o frontend.
