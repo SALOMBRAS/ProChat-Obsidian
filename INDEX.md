@@ -11,4 +11,5 @@ Este índice é o roteador de contexto do Cofre. Consulte-o primeiro e abra apen
 | [01-ARQUITETURA/ARQUITETURA-PLANEJADA.md](01-ARQUITETURA/ARQUITETURA-PLANEJADA.md) | Descrever a arquitetura futura | Em decisões de implementação e integração | Planejado | 2026-07-15 |
 | [01-ARQUITETURA/DECISOES-ARQUITETURAIS.md](01-ARQUITETURA/DECISOES-ARQUITETURAIS.md) | Registrar decisões e consequências | Antes de alterar escolhas arquiteturais | Ativo | 2026-07-15 |
 | [08-MANUTENCAO/FLUXO-CODEX-E-SINCRONIZACAO.md](08-MANUTENCAO/FLUXO-CODEX-E-SINCRONIZACAO.md) | Definir trabalho e sincronização entre computadores | No início e fim de tarefas; em conflitos | Ativo | 2026-07-15 |
+| [08-MANUTENCAO/KIT-MCP.md](08-MANUTENCAO/KIT-MCP.md) | Registrar a integração seletiva do Kit-MCP com o Codex | Ao configurar, diagnosticar, atualizar ou remover o Kit-MCP | Ativo | 2026-07-15 |
 | [09-HISTORICO/CHANGELOG.md](09-HISTORICO/CHANGELOG.md) | Manter histórico documental das mudanças | Ao concluir mudanças relevantes | Ativo | 2026-07-15 |

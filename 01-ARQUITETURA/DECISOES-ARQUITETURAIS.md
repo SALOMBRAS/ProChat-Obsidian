@@ -16,3 +16,4 @@ As decisões registradas aqui representam direções aprovadas, não componentes
 | ADR-010 | 2026-07-15 | Priorizar custo zero na fase acadêmica | Evitar cobrança durante desenvolvimento e apresentação | Serviços pagos dependem de autorização posterior | Aceita |
 | ADR-011 | 2026-07-15 | Preferir automação por CLI e APIs oficiais | Tornar procedimentos reproduzíveis e auditáveis | Intervenção manual fica reservada a ações exclusivas do titular | Aceita |
 | ADR-012 | 2026-07-15 | Proibir serviços pagos sem autorização expressa | Evitar custos e compromissos não aprovados | Nenhuma contratação ou ativação paga pode ser presumida | Aceita |
+| ADR-013 | 2026-07-15 | Usar Kit-MCP seletivamente e fora do runtime | Reaproveitar padrões consultivos sem ampliar dependências nem contexto desnecessário | Versão fixada, pack `core` como seleção inicial, allowlist consultiva e projeções somente após revisão expressa | Aceita |
