@@ -45,3 +45,7 @@
 
 - Adicionados o contrato `WhatsAppProvider`, o adaptador WAHA e a API local do conector com modelos ChatPro normalizados.
 - Mantidos fora de escopo frontend, Supabase, mensagens e qualquer leitura de QR Code além da validação local.
+# 2026-07-15 — Interface WhatsApp autenticada
+
+- Adicionada a seção mínima de instância/QR em `/app`, consumindo somente a API local do conector por cliente tipado.
+- Mantidas as credenciais fora do navegador, uma instância local e QR temporário apenas em memória.

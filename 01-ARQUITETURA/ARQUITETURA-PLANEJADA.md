@@ -22,6 +22,13 @@ Este documento separa a fundação já existente das integrações ainda planeja
 - `services/whatsapp-connector/src/server.ts` expõe apenas em loopback `GET /health`, `POST /instances`, `GET /instances/:id/status`, `GET /instances/:id/qr`, `POST /instances/:id/start` e `POST /instances/:id/stop`.
 - Web e APK futuros devem consumir a API/contrato ChatPro, nunca respostas diretas do WAHA. Mensagens, frontend e Supabase permanecem fora de escopo.
 
+## Interface autenticada da instância
+
+- `apps/web/src/app/app/page.tsx` inclui a seção WhatsApp somente para o usuário autenticado; `whatsapp-instance.tsx` gerencia uma instância fixa em memória e não persiste o QR Code.
+- `apps/web/src/lib/whatsapp-connector/client.ts` é o único cliente web da API própria do conector. O navegador não chama WAHA e não recebe credenciais WAHA.
+- Os estados visíveis são Não criada, Parada, Iniciando, Aguardando QR, Conectada e Erro. O QR é atualizado sob ação do usuário e descartado ao parar, conectar ou ocorrer erro.
+- A API do conector continua limitada a loopback; CORS permite somente `http://localhost:3000` e `http://127.0.0.1:3000`. Web e APK futuros devem continuar consumindo apenas esse contrato ChatPro.
+
 ## Componentes planejados
 
 - **PWA e hospedagem:** evolução futura do frontend; Vercel permanece apenas uma opção futura para o frontend.

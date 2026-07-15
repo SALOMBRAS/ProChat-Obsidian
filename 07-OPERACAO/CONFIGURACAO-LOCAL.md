@@ -64,6 +64,13 @@ Com as variáveis do Supabase configuradas em `apps/web/.env.local`, inicie `npm
 - Smoke local: `GET /health`, `POST /instances` com `{ "id": "teste" }`, `POST /instances/teste/start`, `GET /instances/teste/status`, `GET /instances/teste/qr` e `POST /instances/teste/stop`. O QR é temporário e não deve ser salvo ou exibido em logs.
 - A validação obrigatória inclui `npm run lint`, `npm run typecheck`, `npm run build`, `npm run test --workspace @chatpro/whatsapp-connector` e a remoção da sessão/processos de teste.
 
+## Tela WhatsApp autenticada
+
+- Defina somente `NEXT_PUBLIC_CONNECTOR_API_URL=http://127.0.0.1:3001` em `apps/web/.env.local`, conforme `apps/web/.env.example`. Essa variável contém apenas a URL local pública; credenciais WAHA permanecem em `.env.waha` e não chegam ao navegador.
+- Com WAHA, conector e web na mesma máquina, a tela `/app` permite criar, iniciar, consultar status, atualizar QR e parar a única instância `chatpro-main`.
+- Teste a camada cliente com `npm run test:connector-client`. Para smoke autenticado real, são necessárias as variáveis públicas do Supabase em `apps/web/.env.local`; elas não foram criadas pelo Codex.
+- Não há mensagens, múltiplas instâncias, persistência do QR, CRM, tabelas ou integração Supabase adicional nesta fase.
+
 ## Desenvolvimento
 
 Aplicação web:
