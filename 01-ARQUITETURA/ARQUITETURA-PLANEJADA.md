@@ -6,13 +6,14 @@ Este documento separa a fundação já existente das integrações ainda planeja
 
 - **Workspace:** npm workspaces sem Turborepo, Nx ou outro orquestrador.
 - **Frontend web:** Next.js com App Router, TypeScript, Tailwind CSS e ESLint em `apps/web`.
+- **Autenticação inicial:** Supabase Auth com e-mail e senha, clientes SSR em `apps/web/src/lib/supabase`, sessão por cookies e proteção limitada à rota `/app`.
 - **Conector persistente:** serviço Node.js separado em `services/whatsapp-connector`, ainda sem integração externa.
 - **Pacotes reservados:** `shared`, `database` e `whatsapp-core` contêm somente documentação de responsabilidade futura.
 
 ## Componentes planejados
 
 - **PWA e hospedagem:** evolução futura do frontend; Vercel permanece apenas uma opção futura para o frontend.
-- **Dados e serviços gerenciados:** Supabase para PostgreSQL, Auth, Storage e Realtime.
+- **Dados e serviços gerenciados:** Supabase Auth está limitado ao fluxo inicial de e-mail e senha; PostgreSQL de aplicação, Storage e Realtime permanecem futuros.
 - **Integração WhatsApp:** Baileys restrito ao adaptador, acessível pela aplicação somente por um contrato próprio `WhatsAppProvider`.
 - **Modelos internos:** mensagens e eventos normalizados em modelos próprios, sem expor tipos específicos do provider às demais camadas.
 - **Cliente móvel futuro:** APK consumindo os mesmos serviços e regras de negócio usados pelo frontend.

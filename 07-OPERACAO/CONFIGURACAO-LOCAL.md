@@ -37,6 +37,15 @@ Use apenas a chave publicável. Nunca exponha nem versione `service_role`, senha
 
 O diagnóstico removível `apps/web/src/lib/supabase/connection-test.ts` verifica a URL e a chave publicável pelo endpoint de saúde do Supabase quando chamado em código de servidor após as variáveis serem configuradas. Ele não é executado automaticamente, não autentica usuários e não acessa tabelas da aplicação.
 
+## Autenticação mínima
+
+- As ações de e-mail e senha estão em `apps/web/src/app/auth/actions.ts`; o callback de confirmação está em `apps/web/src/app/auth/callback/route.ts`.
+- As telas são `apps/web/src/app/login/page.tsx` e `apps/web/src/app/cadastro/page.tsx`.
+- A rota `apps/web/src/app/app/page.tsx` mostra somente o e-mail autenticado e o botão de saída.
+- `apps/web/src/proxy.ts` atualiza a sessão SSR e protege exclusivamente `/app`.
+
+Com as variáveis do Supabase configuradas em `apps/web/.env.local`, inicie `npm run dev:web` e verifique `/login`, `/cadastro` e `/app`. Uma solicitação anônima para `/app` deve redirecionar para `/login`.
+
 ## Desenvolvimento
 
 Aplicação web:
@@ -86,4 +95,5 @@ npm run start --workspace @chatpro/whatsapp-connector
 - O npm informou scripts de instalação pendentes para `unrs-resolver`, `sharp` e `esbuild`; lint, typecheck, builds e execução de desenvolvimento passaram sem aprovação adicional.
 - `npm audit` informou duas vulnerabilidades moderadas relacionadas ao `postcss@8.4.31` transitivo do Next.js. Não há correção estável coerente indicada pelo npm nesta data; não foi usado `--force`, canary, downgrade ou override.
 - O Next.js exibe o aviso padrão de telemetria anônima durante o primeiro build.
-- A fundação do Supabase está configurada; autenticação, tabelas, migrações, banco de aplicação, Baileys, WhatsApp, QR Code, CRM, mensagens, mídias, PWA e deploy não estão implementados.
+- O Auth atual cobre somente cadastro, login, logout, confirmação de e-mail e sessão SSR. OAuth, recuperação de senha, perfis, workspaces, tabelas, migrações, banco de aplicação, Baileys, WhatsApp, QR Code, CRM, mensagens, mídias, PWA e deploy não estão implementados.
+- A confirmação por e-mail depende das URLs de redirecionamento permitidas e do serviço de e-mail configurados no painel do Supabase. Não exponha chaves ou tokens ao configurar esse ambiente.

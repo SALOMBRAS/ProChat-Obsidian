@@ -32,3 +32,7 @@
 - Criado o projeto gratuito `ChatPro` na região `sa-east-1`, com instância `nano`.
 - Adicionados os clientes browser e server do Supabase em `apps/web/src/lib/supabase` e o modelo `apps/web/.env.example`, sem valores reais.
 - Adicionado diagnóstico removível do endpoint de saúde do Supabase; autenticação, tabelas, migrações e demais integrações permanecem fora de escopo.
+## 2026-07-15 — Autenticação básica com Supabase
+
+- Implementados cadastro, login, logout, callback de confirmação e sessão SSR por cookies, com proteção restrita a `/app`.
+- Mantidos fora de escopo OAuth, perfis, tabelas e qualquer funcionalidade de WhatsApp ou CRM.
