@@ -13,7 +13,14 @@ Este documento separa a fundação já existente das integrações ainda planeja
 ## WAHA local preparado
 
 - WAHA Core 2026.6.2 está preparado somente em Docker Compose pela imagem oficial fixada em digest, isolado em loopback e com sessões persistidas localmente.
-- Não há cliente WAHA, integração com o frontend, Supabase ou WhatsApp nesta fase. O consumo futuro deverá ocorrer por adaptador e contrato próprio `WhatsAppProvider`.
+- Há cliente WAHA somente no conector local, por adaptador e contrato próprio `WhatsAppProvider`; não há integração com frontend, Supabase ou fluxo de mensagens.
+
+## Contrato e adaptador WAHA
+
+- `packages/whatsapp-core/src/index.ts` define `WhatsAppProvider`, estados normalizados, resultados de instância/QR e `WhatsAppProviderError`; o contrato não expõe modelos do WAHA.
+- `services/whatsapp-connector/src/waha-provider.ts` implementa esse contrato por `WahaClient`; `waha-mappers.ts` converte estados WAHA para modelos ChatPro.
+- `services/whatsapp-connector/src/server.ts` expõe apenas em loopback `GET /health`, `POST /instances`, `GET /instances/:id/status`, `GET /instances/:id/qr`, `POST /instances/:id/start` e `POST /instances/:id/stop`.
+- Web e APK futuros devem consumir a API/contrato ChatPro, nunca respostas diretas do WAHA. Mensagens, frontend e Supabase permanecem fora de escopo.
 
 ## Componentes planejados
 

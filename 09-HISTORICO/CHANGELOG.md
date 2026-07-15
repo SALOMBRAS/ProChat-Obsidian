@@ -41,3 +41,7 @@
 
 - Preparado o WAHA Core local em Docker Compose, isolado em loopback, com estado de sessão ignorado pelo Git e sem integração com a aplicação.
 - Documentados os comandos locais, endpoints de operação, persistência, limites e o uso futuro por adaptador próprio.
+# 2026-07-15 — Abstração WAHA no conector
+
+- Adicionados o contrato `WhatsAppProvider`, o adaptador WAHA e a API local do conector com modelos ChatPro normalizados.
+- Mantidos fora de escopo frontend, Supabase, mensagens e qualquer leitura de QR Code além da validação local.

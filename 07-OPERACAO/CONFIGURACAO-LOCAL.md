@@ -7,7 +7,7 @@
 - npm `11.16.0`.
 - Repositório Main em `C:\Projeto Salo\ChatPro\ChatPro Main`.
 
-Não são necessários pnpm, Yarn, Bun, Python ou Docker. A CLI oficial do Supabase é usada pontualmente por `npx`, sem instalação global ou dependência versionada do projeto.
+Não são necessários pnpm, Yarn, Bun ou Python. Docker Desktop é necessário para operar o WAHA local. A CLI oficial do Supabase é usada pontualmente por `npx`, sem instalação global ou dependência versionada do projeto.
 
 ## Instalação
 
@@ -55,6 +55,14 @@ Com as variáveis do Supabase configuradas em `apps/web/.env.local`, inicie `npm
 - Endpoints operacionais validados: `GET /health`, interface Swagger em `/`, `POST /api/sessions` e `GET /api/{session}/auth/qr`; as chamadas de API usam `X-Api-Key`.
 - O QR Code é temporário e não deve ser registrado. Não escaneie uma conta real sem decisão expressa; WAHA, WhatsApp, Supabase e o frontend continuam sem integração entre si.
 - No futuro, o consumo do WAHA deve ocorrer por adaptador próprio, nunca diretamente pelos componentes da aplicação.
+
+## Conector WAHA local
+
+- O contrato está em `packages/whatsapp-core/src/index.ts`; o adaptador e a API estão em `services/whatsapp-connector/src/`.
+- Reutilize `.env.waha` para `WAHA_API_KEY`; defina também `WAHA_BASE_URL`, `WAHA_TIMEOUT_MS`, `CONNECTOR_HOST` e `CONNECTOR_PORT` conforme `.env.waha.example`. Não duplique chaves nem versione esse arquivo.
+- O conector aceita apenas WAHA e API em loopback. Os scripts do conector carregam `.env.waha`; depois de `npm run build:connector`, inicie com `npm run start --workspace @chatpro/whatsapp-connector`.
+- Smoke local: `GET /health`, `POST /instances` com `{ "id": "teste" }`, `POST /instances/teste/start`, `GET /instances/teste/status`, `GET /instances/teste/qr` e `POST /instances/teste/stop`. O QR é temporário e não deve ser salvo ou exibido em logs.
+- A validação obrigatória inclui `npm run lint`, `npm run typecheck`, `npm run build`, `npm run test --workspace @chatpro/whatsapp-connector` e a remoção da sessão/processos de teste.
 
 ## Desenvolvimento
 
