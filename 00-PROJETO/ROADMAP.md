@@ -1,11 +1,11 @@
 # Roadmap
 
-O roadmap indica sequência, não compromisso de escopo ou prazo. Somente a fase 0 está concluída.
+O roadmap indica sequência, não compromisso de escopo ou prazo. As fases 0 e 1 estão concluídas.
 
 | Fase | Tema | Estado |
 |---:|---|---|
 | 0 | Inicialização dos repositórios e Cofre | Concluída |
-| 1 | Fundação técnica | Planejada |
+| 1 | Fundação técnica | Concluída |
 | 2 | Supabase e autenticação | Planejada |
 | 3 | Estrutura visual | Planejada |
 | 4 | Contrato `WhatsAppProvider` | Planejada |
