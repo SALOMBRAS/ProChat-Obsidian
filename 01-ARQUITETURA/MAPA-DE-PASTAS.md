@@ -75,3 +75,14 @@ Esses diretórios contêm apenas README e não são workspaces npm ativos. Não 
 - Baileys ficará restrito a um adaptador futuro e não poderá vazar para as demais camadas.
 - Alterações em `package.json`, `package-lock.json` ou `tsconfig.base.json` podem afetar web e conector e exigem validação completa.
 - Quando os pacotes reservados ganharem código, seus contratos poderão afetar os dois workspaces e deverão ser documentados antes da adoção.
+
+## Workspace `web/` no checkout atual
+
+O repositório também contém uma plataforma web npm independente em `web/`:
+
+- `web/apps/api`: API Express, fronteira HTTP/worker e persistência SQLite em `src/persistence/`.
+- `web/apps/api/migrations/001_initial_persistence.sql`: schema inicial e journal de migrations reproduzíveis.
+- `web/packages/contracts`: schemas Zod e tipos compartilhados, inclusive contratos de persistência.
+- `web/.chatpro-data/`: banco local de desenvolvimento ignorado; testes criam bancos em diretórios temporários.
+
+Essa camada não acessa o SQLite Electron nem inicia Baileys. Toda entidade persistida possui `workspaceId`, e repositórios são o único ponto de contato com SQLite, preservando a troca futura por PostgreSQL/Supabase.

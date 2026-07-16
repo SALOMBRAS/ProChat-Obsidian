@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-07-15 — Persistência backend web
+
+- Documentada a fundação de persistência SQLite local do backend `web`: migrations, repositórios por workspace, contratos e limitações sem WhatsApp.
+
 ## 2026-07-15 — Fundação técnica
 
 - Criação do npm workspace raiz com Node.js `24.16.0` e npm `11.16.0`.

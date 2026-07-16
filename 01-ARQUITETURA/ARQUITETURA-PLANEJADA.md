@@ -41,6 +41,14 @@ A interface, os dados, as regras de negócio e o provedor do WhatsApp devem perm
 
 O desenvolvimento acadêmico prioriza opções gratuitas. Nenhuma hospedagem paga faz parte da fase atual, e a Vercel é planejada somente para o frontend, não para o conector persistente.
 
+## Persistência local do backend web (15/07/2026)
+
+O checkout atual também possui o workspace `web/`, com API Express em `web/apps/api` e contratos em `web/packages/contracts`. A API ganhou uma fundação SQLite local, exclusivamente para desenvolvimento, via `better-sqlite3`: migration versionada em `web/apps/api/migrations/001_initial_persistence.sql`, journal `schema_migrations` e banco ignorado em `web/.chatpro-data/backend.sqlite` (ou `CHATPRO_DATABASE_PATH`).
+
+Os adaptadores SQLite em `web/apps/api/src/persistence/` expõem repositórios por workspace para contatos, tags, opt-out, templates, CRM, campanhas e configurações. O isolamento usa chaves compostas com `workspaceId`; regras e futuras camadas de serviço não dependem diretamente do driver. A função `initializeWorkspaceCrm` é a única que cria etapas CRM padrão, e não é chamada no runtime normal.
+
+Não existem endpoints CRUD novos, dados de exemplo, sessões, QR, credenciais ou conexão WhatsApp nessa fundação. PostgreSQL/Supabase continua uma troca futura de adaptador, não uma dependência ativa.
+
 ## Diagrama textual
 
 ```text
